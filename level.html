@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Level 2 Quiz</title>
+
+  <!-- 🔐 Protect if not logged in -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .quiz-container {
+      background-color: white;
+      color: black;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 18px;
+      }
+
+      input[type="text"], button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="quiz-container">
+    <h2>OKAY VADAA, KHELO INDIA STORY LA ANDHA VADAKAN PERU ENNA</h2>
+    <p>CLUE: CLUE LA ILLA KELAMBU</p>
+    <label for="answer" style="display:none;">Answer</label>
+    <input type="text" id="answer" placeholder="Your answer here..." autocomplete="off" />
+    <br>
+    <button id="submit-btn" onclick="checkAnswer()">Submit</button>
+  </div>
+
+  <!-- Audio Feedback -->
+  <audio id="correct-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_ccee8c1a59.mp3"></audio>
+  <audio id="wrong-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_56b158b98f.mp3"></audio>
+
+  <script>
+    function normalize(text) {
+      return text.trim().toLowerCase();
+    }
+
+    const answerInput = document.getElementById("answer");
+    const submitBtn = document.getElementById("submit-btn");
+
+    answerInput.addEventListener("input", function() {
+      document.body.style.backgroundColor = "black";
+      submitBtn.disabled = false;
+    });
+
+    function checkAnswer() {
+      const answer = normalize(answerInput.value);
+      const correctAnswer = "hanip";
+
+      const correctSound = document.getElementById("correct-sound");
+      const wrongSound = document.getElementById("wrong-sound");
+
+      if (answer === correctAnswer) {
+        correctSound.play();
+        document.body.style.backgroundColor = "green";
+        setTimeout(() => {
+          window.location.href = "reward.html";
+        }, 2000);
+      } else {
+        wrongSound.play();
+        document.body.style.backgroundColor = "red";
+        setTimeout(() => {
+          document.body.style.backgroundColor = "black";
+        }, 1500);
+      }
+    }
+  </script>
+
+</body>
+</html>

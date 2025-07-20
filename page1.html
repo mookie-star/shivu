@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+
+  <!-- 🔐 Protect this page with login check -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: black;
+      color: white;
+      font-family: 'Arial Black', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 6vw;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 4.5vw;
+      margin-bottom: 30px;
+    }
+
+    a button {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      font-size: 4.5vw;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    a button:hover {
+      background-color: darkred;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 7vw;
+      }
+
+      p {
+        font-size: 5vw;
+      }
+
+      a button {
+        font-size: 5vw;
+        padding: 14px 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>VADAA VAA IPO NEE SIKUNA <br> NE ENNA PERIYA AALA <BR>MUDINJA KANDU PUDI DAAA !</h1>
+  <p> SOO MOO PANNITU RED BUTTON CLICK PANNU</p>
+
+  <a href="level.html">
+    <button>AARAMBAM</button>
+  </a>
+
+</body>
+</html>
